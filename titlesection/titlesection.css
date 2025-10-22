@@ -15,6 +15,7 @@
   color: var(--titleSectionPrimaryColour);
   text-align: center;
   font-family: 'Poppins', sans-serif;
+  padding: 25px;
 }
 
 /* Style the main heading */
@@ -33,6 +34,15 @@
 }
 
 /* Style the button */
+
+.title-section-header {
+	margin: -5px;
+}
+
+.title-section-subtitle {
+	margin: 40px;
+}
+
 .title-section-button {
   color: var(--titleSectionPrimaryColour);
   border: 2px solid var(--titleSectionPrimaryColour);
