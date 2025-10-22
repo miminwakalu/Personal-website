@@ -1,13 +1,16 @@
 :root {
-  --titleSectionPrimaryColour: white;
+  --titleSectionPrimaryColour: rgb(255, 255, 255);
+  --titleSectionSecondaryColour: rgb(204, 165, 188);
 }
 
-title {
+#title {
 		color: var(--titleSectionPrimaryColour);
 		text-align: center;
 		padding-top: 200px;
-	background-image: url('../images/adrian-infernus-GLf7bAwCdYg-unsplash.jpg');
+	background-image: url('images/adrian-infernus-GLf7bAwCdYg-unsplash.jpg');
 	background-position: center top;
+	background-size: cover;
+	height: 100vh;
 }
 
 .title-section-button {
@@ -19,7 +22,8 @@ title {
 }
 
 .title-section-button:hover {
-		background-color: red;
+		background-color: var(--titleSectionPrimaryColour);
+		color: var(--titleSectionSecondaryColour);
 		cursor: pointer;
 	}
 
