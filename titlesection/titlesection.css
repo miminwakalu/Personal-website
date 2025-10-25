@@ -1,6 +1,7 @@
 :root {
   --titleSectionPrimaryColour: rgb(255, 255, 255);
   --titleSectionSecondaryColour: #e6a6b0; /* soft muted pink background */
+  --titleSectionTertiaryColour: rgba??(157, 172, 178);
 }
 
 .title-section-header,
