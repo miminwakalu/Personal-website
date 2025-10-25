@@ -5,3 +5,29 @@
 .aboutme-section-description {
     text-align: justify;
 }
+
+.about-section,
+.about-section h2,
+.about-section p {
+    font-family: 'Lora', serif;
+}
+
+.about-section {
+    background-color: white;
+    color: #333; /* Dark text for good contrast */
+    padding: 80px 25px;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}

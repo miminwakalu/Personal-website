@@ -3,6 +3,12 @@
   --titleSectionSecondaryColour: #e6a6b0; /* soft muted pink background */
 }
 
+.title-section-header,
+.title-section-subtitle,
+.title-section-button {
+  font-family: 'Poppins', san-serif; 
+}
+
 .main-section {
   width: 100vw;
   height: 100vh;
@@ -40,6 +46,9 @@
 /* Style the button */
 
 .title-section-button {
+  font-family: 'Monsteserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
   margin-top: 10px; /* smaller gap between text and button */
 }
 
