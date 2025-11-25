@@ -6,12 +6,12 @@
   <title>Miracle's Website</title>
 
   <!-- Link to your CSS -->
-   <Link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsterrat:wght@500;700&display=swap">
-  <link rel="stylesheet" href="./titlesection/titlesection.css">
-  <link rel="stylesheet" href="./aboutmesection/aboutmesection.css">
-  <link rel="stylesheet" href="./crapsgamesection/crapsgamesection.css">
-  <link heref="https://fonts.googleapis.com/css2?=Lora:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap">
+<link rel="stylesheet" href="./titlesection/titlesection.css">
+<link rel="stylesheet" href="./aboutmesection/aboutmesection.css">
+<link rel="stylesheet" href="./crapsgame/crapsgame.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <!-- Temporary test style -->
   <style>
@@ -61,32 +61,39 @@
   </div>
 </div>
 <div class="main-section" id="craps-game">
-  <h1 class= "craps-game-title">Craps Casino Game</h1>
+  <div class="craps-game-title">Craps Casino Game</div>
+
   <div class="craps-game-container">
-    <div id="craps-game-registration-pane">
-      <div>
-        Enter username to begin
-      </div>
+
+    <!-- Registration -->
+    <div id="craps-registration-pane">
+      <div>Enter username to begin</div>
       <div>
         <input class="craps-registration-input" id="craps-username-input">
-    </div>
+      </div>
       <div class="craps-registration-continue" onclick="registerCrapsPlayer()">
         Continue
       </div>
     </div>
-    </div>
-    <div id="craps-main-section">
+
+    <!-- Main Game -->
+    <div id="craps-main-section" style="display:none;">
       <div class="craps-main-section-stats">
         <div>
-          Welcome, <span id="craps- stats-Username"></span>
+          Welcome, <span id="craps-stats-username"></span>
         </div>
-      <div id="craps-stats-money-container">
-        $<span id="craps-stats-money"></span>
+
+        <div id="craps-stats-money-container">
+          $<span id="craps-stats-money"></span>
+        </div>
+
+        <div>
+          Rounds: <span id="craps-stats-rounds"></span>
+        </div>
       </div>
-    <div>
-        Rounds: <span id="craps-stats-rounds"></span>
+    </div>
+
   </div>
-</div>
 </div>
 </body>
 </html>
