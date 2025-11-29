@@ -4,6 +4,11 @@ let crapsUsername = ""
 // Craps Game Settings
 const crapsStartingMoney = 1000
 const startingRounds = 0
+const Bets = {
+  even: "EVEN",
+  odd: "ODD"
+}
+
 
 // HTML Element IDs
 const crapsUsernameInput = "craps-username-input"
@@ -16,6 +21,7 @@ const crapsStatsRounds = "craps-stats-rounds"
 // In-game variables
 let currentMoney = StartingMoney
 let currentRounds = startingRounds
+let currentBet = Bets.even
 
 function registerCrapsPlayer() {
   crapsUsername = document.getElementById(crapsUsernameInput).value
@@ -47,6 +53,7 @@ function setupFirstRound() {
   currentRounds = startingRounds
   setMoney(currentMoney)
   setRounds(currentRounds)
+  betEven()
 }
 
 function setMoney(money) {
@@ -55,4 +62,19 @@ function setMoney(money) {
 
 function setRounds(rounds) {
   document.getElementById(crapsStatsRounds).innerHTML = rounds
+}
+
+function betEven() {
+  chooseBet(Bets.even)
+}
+
+function betOdd() {
+  chooseBet(Bets.odd)
+}
+
+function chooseBet(bet) {
+  currentBet = bet
+  document.getElementById(bet).style.backgroundColor = "red"
+  const deselectBet = bet == bets.even ? bets.odd : bets.even
+  document.getElementById(deselectBet).style.backgroundColor = "transparent"
 }
