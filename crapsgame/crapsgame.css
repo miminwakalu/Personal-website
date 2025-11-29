@@ -43,8 +43,9 @@
     border-bottom: solid white 1px;
     margin: calc(var(--height-scale) * 0.055) 0;
     color: white;
-    text-align: center;
     font-size: calc(var(--game-title-size) * 0.5);
+    text-align: center;
+    
 }
 
 .craps-registration-input:focus {
