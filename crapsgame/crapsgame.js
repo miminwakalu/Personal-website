@@ -8,7 +8,7 @@ const Bets = {
   even: "EVEN",
   odd: "ODD"
 }
-
+const minimumBet = 50
 
 // HTML Element IDs
 const crapsUsernameInput = "craps-username-input"
@@ -17,11 +17,13 @@ const crapsMainSection = "craps-main-section"
 const crapsStatsUsername = "craps-stats-username"
 const crapsStatsMoney = "craps-stats-money"
 const crapsStatsRounds = "craps-stats-rounds"
+const crapsUserBetAmount = "craps-user-bet-amount"
 
 // In-game variables
-let currentMoney = StartingMoney
+let currentMoney = crapsStartingMoney
 let currentRounds = startingRounds
 let currentBet = Bets.even
+let currentBetAmount = minimumBet
 
 function registerCrapsPlayer() {
   crapsUsername = document.getElementById(crapsUsernameInput).value
@@ -49,11 +51,12 @@ function showMainGameSection() {
 
 function setupFirstRound() {
   document.getElementById(crapsStatsUsername).innerHTML = crapsUsername
-  currentMoney = startingMoney
+  currentMoney = crapsStartingMoney
   currentRounds = startingRounds
   setMoney(currentMoney)
   setRounds(currentRounds)
-  betEven()
+  chooseBet(Bets.even)
+  setBetAmount(minimumBet)
 }
 
 function setMoney(money) {
@@ -64,17 +67,28 @@ function setRounds(rounds) {
   document.getElementById(crapsStatsRounds).innerHTML = rounds
 }
 
-function betEven() {
-  chooseBet(Bets.even)
-}
-
-function betOdd() {
-  chooseBet(Bets.odd)
-}
-
 function chooseBet(bet) {
   currentBet = bet
+
+  // highlight selected
   document.getElementById(bet).style.backgroundColor = "red"
-  const deselectBet = bet == bets.even ? bets.odd : bets.even
+
+  // remove highlight from the other one
+  const deselectBet = bet === Bets.even ? Bets.odd : Bets.even
   document.getElementById(deselectBet).style.backgroundColor = "transparent"
+}
+
+function increaseBet() {
+  currentBetAmount = Math.min(currentBetAmount + minimumBet, currentMoney)
+  setBetAmount(currentBetAmount)
+}
+
+function decreaseBet() {
+  currentBetAmount = Math.max(currentBetAmount - minimumBet, minimumBet)
+  setBetAmount(currentBetAmount)
+}
+
+function setBetAmount(betAmount) {
+  currentBetAmount = betAmount
+  document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount
 }

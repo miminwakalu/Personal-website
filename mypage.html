@@ -68,9 +68,7 @@
     <!-- Registration -->
     <div id="craps-registration-pane">
       <div>Enter username to begin</div>
-      <div>
-        <input class="craps-registration-input" id="craps-username-input">
-      </div>
+      <input class="craps-registration-input" id="craps-username-input">
       <div class="craps-registration-continue" onclick="registerCrapsPlayer()">
         Continue
       </div>
@@ -78,26 +76,24 @@
 
     <!-- Main Game -->
     <div id="craps-main-section" style="display:none;">
+
       <div class="craps-main-section-stats">
-        <div>
-          Welcome, <span id="craps-stats-username"></span>
-        </div>
-
-        <div id="craps-stats-money-container">
-          $<span id="craps-stats-money"></span>
-        </div>
-
-        <div>
-          Rounds: <span id="craps-stats-rounds"></span>
-        </div>
+        <div>Welcome, <span id="craps-stats-username"></span></div>
+        <div id="craps-stats-money-container">$<span id="craps-stats-money"></span></div>
+        <div>Rounds: <span id="craps-stats-rounds"></span></div>
       </div>
+
       <div class="craps-round-manager">
-        <div id="EVEN" onclick="chooseBet()">
-          EVEN
+        <div id="EVEN" class="bet-button" onclick="chooseBet('EVEN')">EVEN</div>
+        <div id="ODD" class="bet-button" onclick="chooseBet('ODD')">ODD</div>
+
+        <div class="bet-adjust">
+          <span class="adjust-btn" onclick="decreaseBet()">-</span>
+          <span id="craps-user-bet-amount">$100</span>
+          <span class="adjust-btn" onclick="increaseBet()">+</span>
         </div>
-        <div id="ODD" onclick="chooseBet()">
-          ODD
       </div>
+
     </div>
   </div>
 </div>

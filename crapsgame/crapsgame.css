@@ -69,7 +69,7 @@
 
 .craps-main-section-stats {
     text-align: center;
-    font-size: calc(var(--height-scale) * 0,04);
+    font-size: calc(var(--height-scale) * 0.04);
     margin-top: calc(var(--height-scale) * 0.15);
 }
 
@@ -85,4 +85,31 @@
     position: absolute;
     bottom: calc(var(--height-scale) * 0.04);
     font-size: calc(var(--height-scale) * 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 20;
+}
+
+#EVEN, #ODD {
+    background: rgba(255, 0, 0, 0.8);
+    padding: 10px 25px;
+    margin: 0 auto;
+    width: 150px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 30;
+}
+
+#EVEN:hover, #ODD:hover {
+    opacity: 0.7;
+}
+
+.bet-adjust span {
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: 1.4em;
+    border: 2px solid white;
+    border-radius: 5px;
+    z-index: 30;
 }
