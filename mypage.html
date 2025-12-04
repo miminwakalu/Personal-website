@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="./titlesection/titlesection.css">
 <link rel="stylesheet" href="./aboutmesection/aboutmesection.css">
 <link rel="stylesheet" href="./crapsgame/crapsgame.css">
+<link rel="stylesheet" href="./crapsgame/utils.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -65,38 +66,65 @@
 
   <div class="craps-game-container">
 
-    <!-- Registration -->
+    <!-- Registration Pane -->
     <div id="craps-registration-pane">
-      <div>Enter username to begin</div>
-      <input class="craps-registration-input" id="craps-username-input">
+      <div class="craps-registration-text">Enter username to begin</div>
+      <input class="craps-registration-input" id="craps-username-input" placeholder="Enter username">
       <div class="craps-registration-continue" onclick="registerCrapsPlayer()">
         Continue
       </div>
     </div>
 
-    <!-- Main Game -->
-    <div id="craps-main-section" style="display:none;">
+    <!-- Main Game (hidden initially) -->
+    <div id="craps-main-section" style="display: none;">
 
+      <!-- Player Stats -->
       <div class="craps-main-section-stats">
         <div>Welcome, <span id="craps-stats-username"></span></div>
         <div id="craps-stats-money-container">$<span id="craps-stats-money"></span></div>
         <div>Rounds: <span id="craps-stats-rounds"></span></div>
       </div>
 
-      <div class="craps-round-manager">
-        <div id="EVEN" class="bet-button" onclick="chooseBet('EVEN')">EVEN</div>
-        <div id="ODD" class="bet-button" onclick="chooseBet('ODD')">ODD</div>
-
-        <div class="bet-adjust">
-          <span class="adjust-btn" onclick="decreaseBet()">-</span>
-          <span id="craps-user-bet-amount">$100</span>
-          <span class="adjust-btn" onclick="increaseBet()">+</span>
-        </div>
+      <!-- Dice Roll Button -->
+      <div class="craps-on-table-container">
+        <div id="craps-roll-dice-button" class="craps-roll-dice-container no-select" onclick="rollDice()">
+          Roll Dice <i class="fas fa-dice"></i></div>
+          <div id="craps-roll-animation-container"></div>
       </div>
 
-    </div>
-  </div>
-</div>
+      <!-- Betting Section -->
+      <div class="craps-round-manager no-select">
+
+        <div class="craps-betting-grid no-select">
+
+          <!-- EVEN BET -->
+          <div id="EVEN" class="craps-bet-button" onclick="chooseBet('EVEN')">
+            EVEN
+          </div>
+
+          <!-- Bet Amount Controls + ODD -->
+          <div class="craps-bet-center-group">
+
+            <span class="craps-user-amount-change" onclick="decreaseBet()">-</span>
+            <span id="craps-user-bet-amount">$100</span>
+            <span class="craps-user-amount-change" onclick="increaseBet()">+</span>
+
+          </div>
+
+          <div id="ODD" class="craps-bet-button" onclick="chooseBet('ODD')">
+              ODD
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div><!-- End Game Section -->
+  
+  </div><!-- End Container -->
+</div><!-- End Craps Game -->
 </body>
 </html>
 
@@ -121,11 +149,12 @@
 </style>
 
 <script src="./crapsgame/crapsgame.js"></script>
+<script type="text/javascript"src="https://unpkg.com/roll-a-die@2.0.1/dist/roll-a-die.js"></script>
 <script>
 
   function MakeTheMostOfEveryEncounter() {
     document.body.style.background = 'url("https://media.giphy.com/media/HhTXt43pk1I1W/200.gif")';
-    document.gotElementById("title").style.visibility = "hidden"
+    document.getElementById("title").style.visibility = "hidden"
   }
 
 </script>

@@ -8,7 +8,7 @@ const Bets = {
   even: "EVEN",
   odd: "ODD"
 }
-const minimumBet = 50
+const minimumBet = 100
 
 // HTML Element IDs
 const crapsUsernameInput = "craps-username-input"
@@ -18,6 +18,9 @@ const crapsStatsUsername = "craps-stats-username"
 const crapsStatsMoney = "craps-stats-money"
 const crapsStatsRounds = "craps-stats-rounds"
 const crapsUserBetAmount = "craps-user-bet-amount"
+const crapsRollDiceButton = "craps-roll-dice-button"
+const crapsRollDiceAnimationContainer = "craps-roll-animation-container";
+
 
 // In-game variables
 let currentMoney = crapsStartingMoney
@@ -91,4 +94,52 @@ function decreaseBet() {
 function setBetAmount(betAmount) {
   currentBetAmount = betAmount
   document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount
+}
+
+function rollDice() {
+    const diceRollElement = document.getElementById(crapsRollDiceAnimationContainer);
+    
+    // Clear previous dice
+    diceRollElement.innerHTML = "";
+
+    // Roll two dice
+    const die1 = Math.floor(Math.random() * 6) + 1;
+    const die2 = Math.floor(Math.random() * 6) + 1;
+
+    // Display dice visually
+    diceRollElement.innerHTML = `
+        <div style="font-size: 2.5rem; margin-top: 10px;">
+            🎲 ${die1} &nbsp; 🎲 ${die2}
+        </div>
+    `;
+
+    // Process result (update rounds, money, etc.)
+    processDiceResult([die1, die2]);
+}
+
+function processDiceResult(diceResult) {
+    console.log("Dice rolled:", diceResult);
+
+    // Increment rounds
+    currentRounds++;
+    setRounds(currentRounds);
+
+    // Check if user won based on EVEN/ODD
+    const total = diceResult[0] + diceResult[1];
+    const isEven = total % 2 === 0;
+
+    if ((isEven && currentBet === Bets.even) || (!isEven && currentBet === Bets.odd)) {
+        // Player wins
+        currentMoney += currentBetAmount;
+        alert(`You rolled ${total} and won $${currentBetAmount}!`);
+    } else {
+        // Player loses
+        currentMoney -= currentBetAmount;
+        alert(`You rolled ${total} and lost $${currentBetAmount}!`);
+    }
+
+    setMoney(currentMoney);
+
+    // Re-enable dice button (if hidden)
+    document.getElementById(crapsRollDiceButton).style.display = "block";
 }
