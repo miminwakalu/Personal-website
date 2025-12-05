@@ -95,7 +95,7 @@ function setBetAmount(betAmount) {
   currentBetAmount = betAmount
   document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount
 }
-
+window.addEventListener("resize", formatDiceScale);
 function formatDiceScale() {
   // compute scale the same way you did, but set it as a CSS variable so CSS transform picks it up
   const vw = window.innerWidth * 0.8;
