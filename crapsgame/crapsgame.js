@@ -27,6 +27,7 @@ let currentMoney = crapsStartingMoney
 let currentRounds = startingRounds
 let currentBet = Bets.even
 let currentBetAmount = minimumBet
+let canChangeBet = true
 
 function registerCrapsPlayer() {
   crapsUsername = document.getElementById(crapsUsernameInput).value
@@ -54,31 +55,29 @@ function showMainGameSection() {
 
 function setupFirstRound() {
   document.getElementById(crapsStatsUsername).innerHTML = crapsUsername
-  currentMoney = crapsStartingMoney
-  currentRounds = startingRounds
-  setMoney(currentMoney)
-  setRounds(currentRounds)
+  setMoney(crapsStartingMoney)
+  setRounds(startingRounds)
   chooseBet(Bets.even)
   setBetAmount(minimumBet)
 }
 
 function setMoney(money) {
+  currentMoney = money
   document.getElementById(crapsStatsMoney).innerHTML = money
 }
 
-function setRounds(rounds) {
-  document.getElementById(crapsStatsRounds).innerHTML = rounds
+function setRounds(round) {
+  currentRounds = round
+  document.getElementById(crapsStatsRounds).innerHTML = round
 }
 
 function chooseBet(bet) {
-  currentBet = bet
-
-  // highlight selected
-  document.getElementById(bet).style.backgroundColor = "red"
-
-  // remove highlight from the other one
-  const deselectBet = bet === Bets.even ? Bets.odd : Bets.even
-  document.getElementById(deselectBet).style.backgroundColor = "transparent"
+  if (canChangeBet) {
+    currentBet = bet
+    document.getElementById(bet).style.backgroundColor = "red"
+    const deselectBet = bet === Bets.even ? Bets.odd : Bets.even
+    document.getElementById(deselectBet).style.backgroundColor = "transparent"
+  }
 }
 
 function increaseBet() {
@@ -92,9 +91,12 @@ function decreaseBet() {
 }
 
 function setBetAmount(betAmount) {
-  currentBetAmount = betAmount
-  document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount
+  if (canChangeBet) {
+    currentBetAmount = betAmount
+    document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount
+  }
 }
+
 window.addEventListener("resize", formatDiceScale);
 function formatDiceScale() {
   // compute scale the same way you did, but set it as a CSS variable so CSS transform picks it up
@@ -130,6 +132,7 @@ const dicePips = {
 };
 
 function rollDice() {
+    canChangeBet = false
     const diceContainer = document.getElementById("craps-roll-dice-animation-container");
     diceContainer.innerHTML = ""; // clear previous dice
 
@@ -170,6 +173,18 @@ function rollDice() {
 }
 
 function processDiceResult(diceResult) {
-    const total = diceResult.reduce((a, b) => a + b, 0);
-    console.log("Dice:", diceResult, "Total:", total);
+  const sum = diceResult.reduce((partialSum, a) => partialSum + a, 0);
+
+  let diceSumResult = Bets.even;
+  if (sum % 2 === 1) {
+      diceSumResult = Bets.odd;
+  }
+  setRounds(currentRounds + 1)
+  if (diceSumResult === currentBet) {
+      alert("YOU WIN!");
+    setMoney(currentMoney + currentBetAmount)
+  } else {
+      alert("YOU LOSE");
+
+  }
 }
