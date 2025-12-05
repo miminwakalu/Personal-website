@@ -19,7 +19,7 @@ const crapsStatsMoney = "craps-stats-money"
 const crapsStatsRounds = "craps-stats-rounds"
 const crapsUserBetAmount = "craps-user-bet-amount"
 const crapsRollDiceButton = "craps-roll-dice-button"
-const crapsRollDiceAnimationContainer = "craps-roll-animation-container";
+const crapsRollDiceAnimationContainer = "craps-roll-dice-animation-container";
 
 
 // In-game variables
@@ -96,50 +96,80 @@ function setBetAmount(betAmount) {
   document.getElementById(crapsUserBetAmount).innerHTML = "$" + betAmount
 }
 
+function formatDiceScale() {
+  // compute scale the same way you did, but set it as a CSS variable so CSS transform picks it up
+  const vw = window.innerWidth * 0.8;
+  const vh = window.innerHeight * 0.8;
+  const widthScale = Math.min(700, vw, vh);
+  const heightScale = widthScale * 0.714;
+  const scale = heightScale / 494.6592;
+
+  const el = document.getElementById(crapsRollDiceAnimationContainer);
+  if (!el) {
+    console.error('formatDiceScale: dice container not found: ', crapsRollDiceAnimationContainer);
+    return;
+  }
+  // set CSS var for transform scale
+  el.style.setProperty('--dice-scale', scale);
+  // also ensure it has explicit width/height while debugging
+  el.style.width = '260px';
+  el.style.height = '260px';
+  // make sure it's visible
+  el.style.display = 'block';
+  el.style.opacity = '1';
+}
+
+// Pip layout positions (3×3 grid)
+const dicePips = {
+    1: [4],
+    2: [0, 8],
+    3: [0, 4, 8],
+    4: [0, 2, 6, 8],
+    5: [0, 2, 4, 6, 8],
+    6: [0, 2, 3, 5, 6, 8]
+};
+
 function rollDice() {
-    const diceRollElement = document.getElementById(crapsRollDiceAnimationContainer);
-    
-    // Clear previous dice
-    diceRollElement.innerHTML = "";
+    const diceContainer = document.getElementById("craps-roll-dice-animation-container");
+    diceContainer.innerHTML = ""; // clear previous dice
 
-    // Roll two dice
-    const die1 = Math.floor(Math.random() * 6) + 1;
-    const die2 = Math.floor(Math.random() * 6) + 1;
+    const diceResults = [];
 
-    // Display dice visually
-    diceRollElement.innerHTML = `
-        <div style="font-size: 2.5rem; margin-top: 10px;">
-            🎲 ${die1} &nbsp; 🎲 ${die2}
-        </div>
-    `;
+    for (let i = 0; i < 2; i++) {
 
-    // Process result (update rounds, money, etc.)
-    processDiceResult([die1, die2]);
+        // Generate random value
+        const roll = Math.floor(Math.random() * 6) + 1;
+        diceResults.push(roll);
+
+        // Create dice element
+        const diceDiv = document.createElement("div");
+        diceDiv.classList.add("dice");
+
+        // Build the pip grid
+        for (let j = 0; j < 9; j++) {
+            const pipSpot = document.createElement("div");
+
+            if (dicePips[roll].includes(j)) {
+                pipSpot.classList.add("pip");
+
+                // randomly choose red or black pip
+                if (Math.random() < 0.5) {
+                    pipSpot.classList.add("red");
+                } else {
+                    pipSpot.classList.add("black");
+                }
+            }
+
+            diceDiv.appendChild(pipSpot);
+        }
+
+        diceContainer.appendChild(diceDiv);
+    }
+
+    processDiceResult(diceResults);
 }
 
 function processDiceResult(diceResult) {
-    console.log("Dice rolled:", diceResult);
-
-    // Increment rounds
-    currentRounds++;
-    setRounds(currentRounds);
-
-    // Check if user won based on EVEN/ODD
-    const total = diceResult[0] + diceResult[1];
-    const isEven = total % 2 === 0;
-
-    if ((isEven && currentBet === Bets.even) || (!isEven && currentBet === Bets.odd)) {
-        // Player wins
-        currentMoney += currentBetAmount;
-        alert(`You rolled ${total} and won $${currentBetAmount}!`);
-    } else {
-        // Player loses
-        currentMoney -= currentBetAmount;
-        alert(`You rolled ${total} and lost $${currentBetAmount}!`);
-    }
-
-    setMoney(currentMoney);
-
-    // Re-enable dice button (if hidden)
-    document.getElementById(crapsRollDiceButton).style.display = "block";
+    const total = diceResult.reduce((a, b) => a + b, 0);
+    console.log("Dice:", diceResult, "Total:", total);
 }
