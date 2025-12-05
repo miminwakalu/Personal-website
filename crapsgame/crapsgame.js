@@ -171,9 +171,11 @@ function rollDice() {
 
     processDiceResult(diceResults);
 }
-
+function delayedProcessDiceResult (diceResult) {
+  setTimeout(function() { processDiceResult(diceResult) }, 1000)
+}
 function processDiceResult(diceResult) {
-  const sum = diceResult.reduce((partialSum, a) => partialSum + a, 0);
+  const sum = diceResult.reduce((partialSum, a) => partialSum + a, 0)
 
   let diceSumResult = Bets.even;
   if (sum % 2 === 1) {
