@@ -25,7 +25,7 @@
   </style>
 </head>
 
-<body>
+<body onload="getNewRandomQuote()">
   <div class="main-section" id="title">
     <h1 class="title-section-header">Miracle Kalu</h1>
     <p class="title-section-subtitle">Building Lasting Impressions At Every Encounter</p>
@@ -131,6 +131,13 @@
   </div><!-- End Game Section -->
   </div><!-- End Container -->
 </div><!-- End Craps Game -->
+<div class="main-section" id="random-quote-generator">
+  <div>
+    <div>Quote: <div id="random-quote-text"></div></div>
+    <div>Author: <div id="random-quote-author"></div></div>
+    <div onclick="getNewRandomQuote()">New Quote</div>
+  </div>
+</div>
 </body>
 </html>
 
@@ -155,6 +162,7 @@
 </style>
 
 <script src="./crapsgame/crapsgame.js"></script>
+<script src="./randomQuoteGenrator/randomQuoteGenerator.js"></script>
 <script type="text/javascript"src="https://unpkg.com/roll-a-die@2.0.1/dist/roll-a-die.js"></script>
 <script>
 
