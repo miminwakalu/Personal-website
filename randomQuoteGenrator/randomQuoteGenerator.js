@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const randomQuoteGeneratorElement = document.getElementById('random-quote-generator');
+  const randomQuoteGeneratorElement =
+    document.getElementById('random-quote-generator');
 
   const colors = [
     ["#FF8080", "#FFCF96"],
@@ -21,34 +22,36 @@ document.addEventListener("DOMContentLoaded", () => {
     return colors[randomIndex];
   }
 
-  function getNewRandomQuote() {
-    fetch('https://api.quotable.io/random')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        const colorCombo = getRandomColorCombo();
+  async function getNewRandomQuote() {
+    try {
+      console.log("GETTING DATA");
 
-        randomQuoteGeneratorElement.style.background =
-          `linear-gradient(135deg, ${colorCombo[0]}, ${colorCombo[1]})`;
+      const response = await fetch('https://api.quotable.io/random');
 
-        // ✅ Quotable API fields
-        document.getElementById('random-quote-text').innerText = data.content;
-        document.getElementById('random-quote-author').innerText = `— ${data.author}`;
-      })
-      .catch(error => {
-        console.error(error);
-        alert('There was a problem getting a new quote!');
-      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+
+      const colorCombo = getRandomColorCombo();
+
+      randomQuoteGeneratorElement.style.background =
+        `linear-gradient(135deg, ${colorCombo[0]}, ${colorCombo[1]})`;
+
+      document.getElementById('random-quote-text').innerText = data.content;
+      document.getElementById('random-quote-author').innerText = `— ${data.author}`;
+
+    } catch (error) {
+      console.error(error);
+      alert('There was a problem getting a new quote!');
+    }
   }
 
-  // ✅ Load first quote automatically
+  // ✅ Load first quote
   getNewRandomQuote();
 
-  // ✅ Attach click event safely
+  // ✅ Button click
   document
     .getElementById("new-random-quote")
     .addEventListener("click", getNewRandomQuote);
