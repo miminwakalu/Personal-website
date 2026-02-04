@@ -1,0 +1,19 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@ssh.github.com:443/miminwakalu/Personal-website.git"
+  },
+  "license": "ISC",
+  "author": "Miracle Kalu",
+  "type": "git",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
