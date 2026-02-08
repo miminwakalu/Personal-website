@@ -45,6 +45,7 @@
   <!-- Load scripts with defer -->
   <script src="./crapsgame/crapsgame.js" defer></script>
   <script src="./randomQuoteGenrator/randomQuoteGenerator.js" defer></script>
+  <script src="./stockAnalysisDashboard/stockAnalysisDashboard.js" defer></script>
   <script src="https://unpkg.com/roll-a-die@2.0.1/dist/roll-a-die.js" defer></script>
 </head>
 
@@ -147,6 +148,16 @@
       <div id="random-quote-text"></div>
       <div id="random-quote-author"></div>
       <div id="new-random-quote">New Quote</div>
+    </div>
+  </div>
+  <div class="main-section" id="stock-analysis-dashboard">
+    <div>
+      <div id="stock-analysis-dashboard-title">STOCK ANALYSIS DASHBOARD</div>
+      <div id="stock-analysis-dashboard-subtitle">
+        Put in a stock symbol you'd like to analyze (e.g. MSFT)
+      </div>
+      <input id="stock-analysis-dashboard-input">
+      <button class="stock-analysis-dashboard-button" onclick="analyzeStock()">Analyze</button>
     </div>
   </div>
 
