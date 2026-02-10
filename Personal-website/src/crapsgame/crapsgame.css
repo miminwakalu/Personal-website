@@ -6,7 +6,7 @@
 }
 
 #craps-game {
-    background-image: url('../images/Vegas.jpg');
+    background-image: url('/images/Vegas.jpg'); /* FIXED */
     background-position: center top;
     background-size: cover;
     color: white; 
@@ -17,7 +17,7 @@
 .craps-game-title {
     font-size: var(--game-title-size);
     text-align: center;
-    margin-top: 70px;      /* ← ADJUST THIS NUMBER TO YOUR PREFERENCE */
+    margin-top: 70px;      
     margin-bottom: var(--title-margin-bottom);
 }
 
@@ -26,7 +26,7 @@
     height: var(--height-scale);
     border: solid white 2px;
     margin: auto 0;
-    background-image: url('../images/CrapsTable.png');
+    background-image: url('/images/CrapsTable.png'); /* FIXED */
     background-size: cover;
     background-position: center top;
     position: relative;
@@ -34,9 +34,9 @@
 
 #craps-registration-pane {
     margin-top: calc(var(--height-scale) * 0.15);
-    font-size: calc(var(--title-game-size) * 0.5);
+    font-size: calc(var(--game-title-size) * 0.5);
     text-align: center;
-    }
+}
 
 .craps-registration-input {
     background: none;
@@ -46,7 +46,6 @@
     color: white;
     font-size: calc(var(--game-title-size) * 0.5);
     text-align: center;
-    
 }
 
 .craps-registration-input:focus {
@@ -79,9 +78,12 @@
 }
 
 .craps-on-table-container {
-    margin: calc(var(--height-scale) * 0.2);
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    height: auto !important;
     font-size: calc(var(--height-scale) * 0.03);
-    border: solid white 1px;
     text-align: center; 
     position: relative;
     padding-top: 20px; /* space for dice to land */
@@ -165,7 +167,7 @@
     flex-direction: row !important;
     justify-content: center;
     align-items: center;
-    gap: 20px;               /* space between EVEN | amount box | ODD */
+    gap: 20px;
     width: 90%;
     margin: 0 auto;
     border: solid white 2px;
@@ -228,8 +230,7 @@
 }
 
 #craps-next-round-button:hover {
-    cursor: not-allowed;
-    
+    cursor: not-allowed;   
 }
 
 #EVEN, #ODD {
@@ -255,26 +256,18 @@
     z-index: 30;
 }
 
-/* Remove the big blocking space without disabling clicks */
-.craps-on-table-container {
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    background: transparent !important;
-    height: auto !important;
-}
-
+/* Betting section tweaks */
 .betting-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* space between EVEN | bet box | ODD */
+    gap: 20px;
     width: 90%;
     margin: 0 auto;
     border: 2px solid white;
     border-radius: 8px;
-    padding: 4px 0; /* reduced padding */
+    padding: 4px 0;
 }
 
 .craps-bet-center-group {
@@ -296,10 +289,10 @@
     gap: 20px;                
     width: 90%;
     margin: 10px auto 0 auto;
-    padding: 6px 0;           /* slightly taller for visible box */
-    background: rgba(50, 50, 50, 0.7); /* semi-transparent dark box */
-    border: 2px solid white;  /* optional border to match style */
-    border-radius: 8px;       /* rounded corners for the box */
+    padding: 6px 0;
+    background: rgba(50, 50, 50, 0.7);
+    border: 2px solid white;
+    border-radius: 8px;
 }
 
 .craps-round-finish-button {
