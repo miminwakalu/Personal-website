@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Miracle's Website</title>
 
-  <!-- Link to your CSS -->
+  <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap">
-  <link rel="stylesheet" href="./titlesection/titlesection.css">
-  <link rel="stylesheet" href="./aboutmesection/aboutmesection.css">
-  <link rel="stylesheet" href="./crapsgame/crapsgame.css">
-  <link rel="stylesheet" href="./crapsgame/utils.css">
-  <link rel="stylesheet" href="./randomQuoteGenrator/randomQuoteGenerator.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
 
   <!-- Temporary test style -->
   <style>
-    body { 
-      background-color: #e6a6b0; 
-      color: black; 
+    body {
+      background-color: #e6a6b0;
+      color: black;
       text-align: center;
       margin-top: 50px;
     }
@@ -41,20 +41,19 @@
       }
     }
   </style>
-
-  <!-- Load scripts with defer -->
-  <script src="./crapsgame/crapsgame.js" defer></script>
-  <script src="./randomQuoteGenrator/randomQuoteGenerator.js" defer></script>
-  <script src="./stockAnalysisDashboard/stockAnalysisDashboard.js" defer></script>
-  <script src="https://unpkg.com/roll-a-die@2.0.1/dist/roll-a-die.js" defer></script>
 </head>
 
 <body>
   <!-- TITLE SECTION -->
   <div class="main-section" id="title">
     <h1 class="title-section-header">Miracle Kalu</h1>
-    <p class="title-section-subtitle">Building Lasting Impressions At Every Encounter</p>
-    <button class="title-section-button" onclick="alert('Dream coming true!')">
+    <p class="title-section-subtitle">
+      Building Lasting Impressions At Every Encounter
+    </p>
+    <button
+      class="title-section-button"
+      onclick="alert('Dream coming true!')"
+    >
       MAKE THE MOST OF EVERY ENCOUNTER
     </button>
   </div>
@@ -63,15 +62,27 @@
   <div class="misc-section" id="aboutme">
     <div class="text-block-container">
       <h2>About Me</h2>
+
+      <!-- Example image -->
+      <!-- Image MUST be inside public/images -->
+      <img
+        src="/images/profile.jpg"
+        alt="Miracle Kalu"
+        style="max-width: 200px; border-radius: 50%; margin-bottom: 20px;"
+      />
+
       <p class="aboutme-section-description">
-        I’m Miracle Kalu, a detail-oriented professional with a background in English Language and a 
-        passion for administrative excellence, creative storytelling, and innovation.
-        My drive to grow and create meaningful impact has led me to explore software engineering, where 
-        I’m learning to merge creativity with technology to build purposeful digital experiences.
-        I believe in leaving lasting impressions through intentional work and graceful communication.
+        I’m Miracle Kalu, a detail-oriented professional with a background in
+        English Language and a passion for administrative excellence, creative
+        storytelling, and innovation. My drive to grow and create meaningful
+        impact has led me to explore software engineering, where I’m learning to
+        merge creativity with technology to build purposeful digital experiences.
+        I believe in leaving lasting impressions through intentional work and
+        graceful communication.
       </p>
+
       <div class="aboutme-icons">
-        <a href="https://wwww.linkedin.com/in/miraclekalu/" target="_blank">
+        <a href="https://www.linkedin.com/in/miraclekalu/" target="_blank">
           <i class="aboutme-icon fab fa-linkedin-in"></i>
         </a>
         <a href="https://www.instagram.com/iam_miraclekalu/" target="_blank">
@@ -84,8 +95,14 @@
           <i class="aboutme-icon far fa-envelope"></i>
         </a>
       </div>
+
+      <!-- CV must live in public/aboutmesection -->
       <div class="aboutme-download-link">
-        <a href="./aboutmesection/Miracle Kalu Updated CV.docx" download target="_blank">
+        <a
+          href="/aboutmesection/Miracle Kalu Updated CV.docx"
+          download
+          target="_blank"
+        >
           Download My CV
         </a>
       </div>
@@ -95,48 +112,48 @@
   <!-- CRAPS GAME SECTION -->
   <div class="main-section" id="craps-game">
     <div class="craps-game-title">Craps Casino Game</div>
+
     <div class="craps-game-container">
       <div id="craps-registration-pane">
-        <div class="craps-registration-text">Enter username to begin</div>
-        <input class="craps-registration-input" id="craps-username-input" placeholder="Enter username">
-        <div class="craps-registration-continue" onclick="registerCrapsPlayer()">Continue</div>
+        <div class="craps-registration-text">
+          Enter username to begin
+        </div>
+        <input
+          class="craps-registration-input"
+          id="craps-username-input"
+          placeholder="Enter username"
+        />
+        <div
+          class="craps-registration-continue"
+          onclick="registerCrapsPlayer()"
+        >
+          Continue
+        </div>
       </div>
 
       <div id="craps-main-section" style="display: none;">
         <div class="craps-main-section-stats">
-          <div>Welcome, <span id="craps-stats-username"></span></div>
-          <div id="craps-stats-money-container">$<span id="craps-stats-money"></span></div>
-          <div>Rounds: <span id="craps-stats-rounds"></span></div>
+          <div>
+            Welcome, <span id="craps-stats-username"></span>
+          </div>
+          <div id="craps-stats-money-container">
+            $<span id="craps-stats-money"></span>
+          </div>
+          <div>
+            Rounds: <span id="craps-stats-rounds"></span>
+          </div>
         </div>
 
         <div class="craps-on-table-container">
-          <div id="craps-roll-dice-button" class="craps-roll-dice-container no-select" onclick="rollDice()">
+          <div
+            id="craps-roll-dice-button"
+            class="craps-roll-dice-container no-select"
+            onclick="rollDice()"
+          >
             Roll Dice <i class="fas fa-dice"></i>
           </div>
           <div id="craps-roll-dice-animation-container"></div>
         </div>
-
-        <div class="craps-round-manager no-select">
-          <div class="craps-layout-wrapper">
-            <div class="betting-section">
-              <div id="EVEN" class="craps-bet-button" onclick="chooseBet('EVEN')">EVEN</div>
-              <div class="craps-bet-center-group">
-                <span class="craps-user-amount-change" onclick="decreaseBet()">-</span>
-                <span id="craps-user-bet-amount">$100</span>
-                <span class="craps-user-amount-change" onclick="increaseBet()">+</span>
-              </div>
-              <div id="ODD" class="craps-bet-button" onclick="chooseBet('ODD')">ODD</div>
-            </div>
-
-            <div class="actions-section">
-              <div id="craps-next-round-button" class="craps-round-finish-button" onclick="setupNextRound()">NEXT ROUND</div>
-              <div id="craps-next-round-button-disabled" class="craps-round-finish-button">NEXT ROUND</div>
-              <div id="craps-round-finish-message">YOU WIN!</div>
-              <div class="craps-round-finish-button" onclick="exitGame()">EXIT GAME</div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -150,22 +167,27 @@
       <div id="new-random-quote">New Quote</div>
     </div>
   </div>
+
+  <!-- STOCK ANALYSIS DASHBOARD -->
   <div class="main-section" id="stock-analysis-dashboard">
     <div>
-      <div id="stock-analysis-dashboard-title">STOCK ANALYSIS DASHBOARD</div>
+      <div id="stock-analysis-dashboard-title">
+        STOCK ANALYSIS DASHBOARD
+      </div>
       <div id="stock-analysis-dashboard-subtitle">
         Put in a stock symbol you'd like to analyze (e.g. MSFT)
       </div>
-      <input id="stock-analysis-dashboard-input">
-      <button class="stock-analysis-dashboard-button" onclick="analyzeStock()">Analyze</button>
+      <input id="stock-analysis-dashboard-input" />
+      <button
+        class="stock-analysis-dashboard-button"
+        onclick="analyzeStock()"
+      >
+        Analyze
+      </button>
     </div>
   </div>
 
-  <script>
-    function MakeTheMostOfEveryEncounter() {
-      document.body.style.background = 'url("https://media.giphy.com/media/HhTXt43pk1I1W/200.gif")';
-      document.getElementById("title").style.visibility = "hidden";
-    }
-  </script>
+  <!-- ✅ VITE ENTRY POINT -->
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
