@@ -1,7 +1,4 @@
-const stockAnalysisDashboardInput = 'stock-analysis-dashboard-input'
-
-async function analyzeStock() {
-    document.getElementById('stock-analysis-dashboard-data').innerHTML = ''
+export async function analyzeStock() {
     const stockSymbolToAnalyze = document.getElementById(stockAnalysisDashboardInput).value
     if (stockSymbolToAnalyze.length === 0) {
         alert('You must put in a ticker symbol before running the analysis!')
@@ -14,6 +11,5 @@ async function analyzeStock() {
         alert('There was a problem getting the analysis for your stock!');
     }
     const data = await response.json()
-    console.log(data)
-    document.getElementById('stock-analysis-dashboard-data').innerHTML = JSON.stringify(data)
+    return data
 }
